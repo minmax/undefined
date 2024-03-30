@@ -2,25 +2,16 @@
 a simple package
 """
 
+from typing import NoReturn
+
 
 __version__ = '0.0.7'
 
-from typing import NoReturn
 
 class Undefined:
     """
     Simply a global object that act as undefined.
     """
-
-    __version__ = __version__
-
-
-    @property
-    def Undefined(self):
-        return self
-
-    def __call__(self, value):
-        return value is self
 
     def __eq__(self, other: object) -> NoReturn:
         raise NotImplementedError('Cannot compare undefined')
