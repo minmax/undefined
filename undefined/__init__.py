@@ -11,6 +11,8 @@ __version__ = "0.0.7"
 class _Undefined:
     """Simply a global object that act as undefined."""
 
+    __slots__ = ()  # Make object immutable
+
     def __eq__(self, other: object) -> NoReturn:
         msg = "Cannot compare undefined"
         raise NotImplementedError(msg)
