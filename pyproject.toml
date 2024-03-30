@@ -1,13 +1,38 @@
+[tool.poetry]
+name = "undefined"
+version = "0.1.0"
+description = "Simply a global object that act as undefined."
+authors = [
+    "Matthias Bussonnier <bussonniermatthias@gmail.com>",
+    "Karataev Pavel <karataev.pavel@gmail.com>",
+]
+classifiers = [
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Topic :: Software Development",
+]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+typing-extensions = "^4.10.0"
+
+[tool.poetry.group.dev.dependencies]
+pyright = "^1.1.356"
+ruff = "^0.3.4"
+pre-commit = "^3.7.0"
+pre-commit-hooks = "^4.5.0"
+pytest = "^8.1.1"
+
 [build-system]
-requires = ["flit"]
-build-backend = "flit.buildapi"
-
-[tool.flit.metadata]
-module = "undefined"
-author = "Matthias Bussonnier"
-author-email = "bussonniermatthias@gmail.com"
-home-page = "https://github.com/Carreau/undefined"
-classifiers = ["License :: OSI Approved :: MIT License"]
-description-file = "readme.md"
-requires-python = ">=3.4"
-
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

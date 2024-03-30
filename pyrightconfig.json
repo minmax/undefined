@@ -1,0 +1,21 @@
+{
+    "deprecateTypingAliases": true,
+    "disableBytesTypePromotions": true,
+    "enableExperimentalFeatures": true,
+    "enableTypeIgnoreComments": false,
+    "include": [
+        "undefined/"
+    ],
+    "pythonPlatform": "Linux",
+    "pythonVersion": "3.9",
+    "reportImplicitOverride": false,
+    "reportImportCycles": true,
+    "reportMissingImports": true,
+    "reportMissingTypeStubs": true,
+    "reportPropertyTypeMismatch": true,
+    "reportShadowedImports": true,
+    "reportUnnecessaryComparison": true,
+    "reportUnnecessaryTypeIgnoreComment": true,
+    "reportUnusedVariable": "error",
+    "typeCheckingMode": "strict",
+}
