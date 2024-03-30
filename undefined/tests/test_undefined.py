@@ -1,24 +1,37 @@
-import undefined as ud
-import undefined
-from  undefined import Undefined as uc
+from __future__ import annotations
+
+from typing import Any
+
+import pytest
+from typing_extensions import assert_type
+
+from undefined import Undefined, undefined
 
 
-def test_undefined():
-    assert ud is uc
+def test_undefined() -> None:
+    mapping: dict[Any, Any] = {}
+    assert mapping.get("", undefined) is undefined
 
 
+def test_types() -> None:
+    mapping: dict[str, None | Undefined] = {"null": None}
 
-import unittest
+    if (val := mapping.get("null", undefined)) is undefined:
+        assert_type(val, Undefined)
+    else:
+        assert_type(val, None)
 
-class TestUndefined(unittest.TestCase):
+
+def test_is_instance() -> None:
+    with pytest.raises(TypeError):
+        assert isinstance(undefined, Undefined)  # pyright: ignore[reportArgumentType]
 
 
-  def test_bool(self):
-      with self.assertRaises(NotImplementedError):
-          if undefined:
-              pass
+def test_bool() -> None:
+    with pytest.raises(NotImplementedError):
+        bool(undefined)
 
-  def test_str(self):
-      with self.assertRaises(NotImplementedError):
-          '%s' % undefined
 
+def test_str() -> None:
+    with pytest.raises(NotImplementedError):
+        str(undefined)

@@ -1,5 +1,28 @@
 # Undefined
 
+Use as default to help with None:
+```
+from undefined import Undefined, undefined
+
+mapping: dict[str, object | None | Undefined] = {}
+
+if value := mapping.get(key, undefined) is undefined:
+    assert_type(value, Undefined)
+else:
+    assert_type(value, object | None)
+```
+
+Or use as pre defined immutable function argument value.
+
+```
+def foo(nullable: object | None | Undefined = undefined):
+    if nullable is undefined:
+        nullable = ...
+        return
+
+    assert_type(value, object | None)
+```
+
 Ever needed a global object that act as `None` but not quite ?
 
 Like for example key-word argument for function, where `None` make sens, so you need a default value.
@@ -11,9 +34,9 @@ mysingleton = object()
 ```
 
 Though it becomes difficult to track the singleton across libraries,
-and teach users where to import this from. 
+and teach users where to import this from.
 
-It's also relatively annoying use this singleton across library. 
+It's also relatively annoying use this singleton across library.
 
 
 Introducing `undefined`:
@@ -67,7 +90,7 @@ I tend to be torn between lowercase, for simplicity, and Uppercase.
 ### Unlike `None`, you can assign to it
 
 ```
->>> None = 3 
+>>> None = 3
 SyntaxError: can't assign to keyword
 ```
 
@@ -89,7 +112,7 @@ SyntaxError: can't assign to keyword
 
 ### Unlike `None`, `undefined` is neither true not false.
 
-If you test for boolean value of `undefind` if will raise. 
+If you test for boolean value of `undefind` if will raise.
 That is to say: the following will fail:
 
 ```
