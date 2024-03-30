@@ -5,11 +5,9 @@ a simple package
 
 __version__ = '0.0.7'
 
-import sys
-import types
 from typing import NoReturn
 
-class Undefined(types.ModuleType):
+class Undefined:
     """
     Simply a global object that act as undefined.
     """
@@ -35,18 +33,3 @@ class Undefined(types.ModuleType):
 
     def __str__(self) -> NoReturn:
         raise NotImplementedError("Cannot represent undefined !")
-
-
-Undefined.__name__ = 'Undefined'
-Undefined = Undefined('undefined', """
-    Simply a global object that act as undefined.
-    """
-)
-
-Undefined.__version__ = __version__
-
-if sys.modules[__name__] is Undefined:
-    print('doing nothing')
-    pass
-else:
-   sys.modules[__name__] = Undefined
