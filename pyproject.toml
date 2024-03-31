@@ -24,14 +24,14 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-typing-extensions = "^4.10.0"
+typing-extensions = "^4.2.0"
 
 [tool.poetry.group.dev.dependencies]
-pyright = "^1.1.356"
-ruff = "^0.3.4"
 pre-commit = "^3.7.0"
 pre-commit-hooks = "^4.5.0"
+pyright = "^1.1.356"
 pytest = "^8.1.1"
+ruff = "^0.3.4"
 
 [build-system]
 requires = ["poetry-core"]
