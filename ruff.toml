@@ -7,14 +7,15 @@ select = ["ALL"]
 fixable = ["ALL"]
 ignore = [
     "ANN101", # Missing type annotation for `self` in method
-    "D203",   # one-blank-line-before-class
     "COM812", # missing-trailing-comma
-    "ISC001", # single-line-implicit-string-concatenation
-    "D102",   # Missing docstring in public method
-    "D101",   # Missing docstring in public class
-    "S101",   # Use of `assert` detected
-    "D103",   # Missing docstring in public function
     "D100",   # Missing docstring in public module
+    "D101",   # Missing docstring in public class
+    "D102",   # Missing docstring in public method
+    "D103",   # Missing docstring in public function
+    "D104",   # Missing docstring in public package
+    "D203",   # one-blank-line-before-class
+    "ISC001", # single-line-implicit-string-concatenation
+    "S101",   # Use of `assert` detected
 ]
 
 [lint.pydocstyle]
