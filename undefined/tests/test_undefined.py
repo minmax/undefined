@@ -27,6 +27,11 @@ def test_is_instance() -> None:
         assert isinstance(undefined, Undefined)  # pyright: ignore[reportArgumentType]
 
 
+def test_eq() -> None:
+    with pytest.raises(NotImplementedError):
+        assert undefined == "None"
+
+
 def test_bool() -> None:
     with pytest.raises(NotImplementedError):
         bool(undefined)
