@@ -1,27 +1,29 @@
 # Undefined
 
+## Code examples
+
 Use as default to help with None:
+
 ```
 from undefined import Undefined, undefined
 
-mapping: dict[str, object | None | Undefined] = {}
+mapping: dict[str, object | Undefined] = {}
 
 if value := mapping.get(key, undefined) is undefined:
     assert_type(value, Undefined)
 else:
-    assert_type(value, object | None)
+    assert_type(value, object) # 'value' May be None
 ```
 
-Or use as pre defined immutable function argument value.
+Or use as pre-defined immutable function argument.
 
 ```
 def foo(nullable: object | None | Undefined = undefined):
     if nullable is undefined:
         nullable = ...
-        return
-
-    assert_type(value, object | None)
 ```
+
+## Long read
 
 Ever needed a global object that act as `None` but not quite ?
 
@@ -42,16 +44,18 @@ It's also relatively annoying use this singleton across library.
 Introducing `undefined`:
 
 ```
->>> import undefined
->>> from undefined import Undefined
+>>> from undefined import undefined, Undefined
 >>> undefined is Undefined
 True
 ```
 
-
 # behavior
 
-It work (for now) mostly like a singleton object
+`undefined` - is for runtime 'is' operation
+
+`Undefined` - is for type hinting
+
+It work mostly like a singleton object
 
 Though it's neither truthy not falsy
 
@@ -59,29 +63,6 @@ Though it's neither truthy not falsy
 >>> if undefined: print(True)
 raise NotImplementedError
 ```
-
-# Casing ?
-
-Because it is a module you can use it lowercase:
-
-```
-import undefined
-```
-
-Because it looks more like a keyword (`None`, `True`, `False`), you can use it upper case:
-
-```
-import undefined as Undefined
-```
-
-or
-
-```
-from undefined import Undefined
-```
-
-I tend to be torn between lowercase, for simplicity, and Uppercase.
-
 
 # Why not `None`, difference with `None`
 
@@ -99,16 +80,6 @@ SyntaxError: can't assign to keyword
 >>> undefned
 3
 ```
-
-### Unlike `None`, `undefined` is mutable
-
-```
->>> undefined.value = 42
->>> undefined.value
-42
-```
-
-(might be able to fix that with `__get_attr__`
 
 ### Unlike `None`, `undefined` is neither true not false.
 
