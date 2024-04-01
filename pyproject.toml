@@ -20,7 +20,7 @@ classifiers = [
     "Topic :: Software Development",
 ]
 license = "MIT"
-readme = "README.md"
+readme = "readme.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
