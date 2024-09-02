@@ -13,7 +13,7 @@ class _Undefined:
 
     __slots__ = ()  # Make object immutable
 
-    def __eq__(self, other: object) -> NoReturn:
+    def __eq__(self, other: object, /) -> NoReturn:
         msg = "Cannot compare undefined"
         raise NotImplementedError(msg)
 
@@ -32,6 +32,6 @@ class _Undefined:
 Undefined: TypeAlias = type[_Undefined]
 
 if TYPE_CHECKING:
-    undefined: Undefined
+    undefined = _Undefined
 else:
     undefined = _Undefined()
