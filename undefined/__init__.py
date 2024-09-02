@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING, NoReturn
 
 from typing_extensions import TypeAlias, final
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 
 @final
