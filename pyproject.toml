@@ -2,7 +2,7 @@
 name = "undefined"
 version = "0.1.1"
 description = "Simply a global object that act as undefined."
-readme = "README.md"
+readme = "readme.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 classifiers = [
