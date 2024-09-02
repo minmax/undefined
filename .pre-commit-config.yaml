@@ -8,7 +8,7 @@ repos:
     hooks:
       - id: trailing-whitespace
         description: trims trailing whitespace.
-        entry: trailing-whitespace-fixer
+        entry: uv run trailing-whitespace-fixer
         language: system
         name: trim trailing whitespace
         pass_filenames: true
@@ -18,7 +18,7 @@ repos:
 
       - id: end-of-file-fixer
         description: ensures that a file is either empty, or ends with one newline.
-        entry: end-of-file-fixer
+        entry: uv run end-of-file-fixer
         language: system
         name: fix end of files
         pass_filenames: true
@@ -26,26 +26,26 @@ repos:
         exclude_types: [python, pyi]
         types: [text]
 
-      - id: poetry-check
-        name: poetry check
-        description: run poetry check to validate config
-        entry: poetry check
+      - id: uv-check
+        name: uv check
+        description: run uv lock to validate config
+        entry: uv run uv lock --locked
         language: system
         pass_filenames: false
-        files: ^(.*/)?pyproject\.toml$
+        files: ^(.*/)?pyproject\.toml|(.*/)?uv\.lock$
         stages: [commit]
 
-      - id: poetry-install
-        name: poetry install
-        description: run poetry install to install dependencies from the lock file
-        entry: poetry install --with dev
+      - id: uv-sync
+        name: uv sync
+        description: run uv sync to install dependencies from the lock file
+        entry: uv run uv sync
         language: system
         pass_filenames: false
         stages: [post-checkout, post-merge]
         always_run: true
 
       - id: ruff-check
-        entry: ruff check --fix --show-fixes
+        entry: uv run ruff check --fix --show-fixes
         language: system
         name: ruff check
         pass_filenames: true
@@ -54,28 +54,28 @@ repos:
         stages: [commit]
 
       - id: ruff-format
-        entry: ruff format
+        entry: uv run ruff format
         language: system
         name: ruff format
         pass_filenames: true
         require_serial: true
-        types_or: [  python, pyi ]
-        stages: [ commit ]
+        types_or: [python, pyi]
+        stages: [commit]
 
       - id: pytest
-        entry: pytest .
+        entry: uv run pytest .
         language: system
         name: pytest
         pass_filenames: false
         require_serial: true
-        types_or: [  python, pyi ]
-        stages: [ commit ]
+        types_or: [python, pyi]
+        stages: [commit]
 
       - id: pyright
-        entry: pyright .
+        entry: uv run pyright .
         language: system
         name: pyright
         pass_filenames: false
         require_serial: true
-        types_or: [  python, pyi ]
-        stages: [ commit ]
+        types_or: [python, pyi]
+        stages: [commit]

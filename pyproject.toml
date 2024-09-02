@@ -1,11 +1,10 @@
-[tool.poetry]
+[project]
 name = "undefined"
-version = "0.1.0"
+version = "0.1.1"
 description = "Simply a global object that act as undefined."
-authors = [
-    "Matthias Bussonnier <bussonniermatthias@gmail.com>",
-    "Karataev Pavel <karataev.pavel@gmail.com>",
-]
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
 classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
@@ -19,20 +18,23 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Topic :: Software Development",
 ]
-license = "MIT"
-readme = "readme.md"
-
-[tool.poetry.dependencies]
-python = "^3.9"
-typing-extensions = "^4.2.0"
-
-[tool.poetry.group.dev.dependencies]
-pre-commit = "^3.7.0"
-pre-commit-hooks = "^4.5.0"
-pyright = "^1.1.356"
-pytest = "^8.1.1"
-ruff = "^0.3.4"
+authors = [
+    { name = "Matthias Bussonnier", email = "bussonniermatthias@gmail.com" },
+    { name = "Karataev Pavel", email = "karataev.pavel@gmail.com" },
+]
+dependencies = ["typing-extensions >= 4.2.0"]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = [
+    "pre-commit >= 3.7.0",
+    "pre-commit-hooks >= 4.5.0",
+    "pyright >= 1.1.356",
+    "pytest >= 8.1.1",
+    "ruff >= 0.3.4",
+]
+environments = ["sys_platform == 'darwin'", "sys_platform == 'linux'"]
+preview = true

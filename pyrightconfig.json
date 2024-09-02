@@ -1,6 +1,5 @@
 {
     "deprecateTypingAliases": true,
-    "disableBytesTypePromotions": true,
     "enableExperimentalFeatures": true,
     "enableTypeIgnoreComments": false,
     "include": [
