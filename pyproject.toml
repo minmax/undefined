@@ -1,6 +1,6 @@
 [project]
 name = "undefined"
-version = "0.1.2"
+version = "0.1.3"
 description = "Simply a global object that act as undefined."
 readme = "readme.md"
 requires-python = ">=3.9"

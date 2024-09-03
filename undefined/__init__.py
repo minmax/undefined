@@ -2,7 +2,7 @@ from typing import TYPE_CHECKING, NoReturn
 
 from typing_extensions import TypeAlias, final
 
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 
 
 __all__ = ("UndefinedError", "Undefined", "undefined")
