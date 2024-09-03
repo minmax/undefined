@@ -50,3 +50,12 @@ def test_isinstance() -> None:
 def test_issubclass() -> None:
     with pytest.raises(UndefinedError, match="Cannot issubclass undefined!"):
         issubclass(object, Undefined)  # pyright: ignore[reportArgumentType]
+
+
+def test_hash_cls() -> None:
+    assert isinstance(hash(Undefined), int)
+
+
+def test_hash_instance() -> None:
+    with pytest.raises(UndefinedError, match="Cannot __hash__ undefined"):
+        hash(undefined)
