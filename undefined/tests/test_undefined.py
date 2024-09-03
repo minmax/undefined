@@ -5,7 +5,7 @@ from typing import Any
 import pytest
 from typing_extensions import assert_type
 
-from undefined import Undefined, undefined
+from undefined import Undefined, UndefinedError, undefined
 
 
 def test_undefined() -> None:
@@ -22,21 +22,31 @@ def test_types() -> None:
         assert_type(val, None)
 
 
-def test_is_instance() -> None:
-    with pytest.raises(TypeError):
-        assert isinstance(undefined, Undefined)  # pyright: ignore[reportArgumentType]
-
-
 def test_eq() -> None:
-    with pytest.raises(NotImplementedError):
+    with pytest.raises(UndefinedError):
         assert undefined == "None"
 
 
 def test_bool() -> None:
-    with pytest.raises(NotImplementedError):
+    with pytest.raises(UndefinedError):
         bool(undefined)
 
 
 def test_str() -> None:
-    with pytest.raises(NotImplementedError):
+    with pytest.raises(UndefinedError):
         str(undefined)
+
+
+def test_is_instance_self() -> None:
+    # its ok in runtime, but wrong on typing
+    assert isinstance(undefined, Undefined)  # pyright: ignore[reportArgumentType]
+
+
+def test_isinstance() -> None:
+    with pytest.raises(UndefinedError, match="Cannot isinstance undefined!"):
+        isinstance(object, Undefined)  # pyright: ignore[reportArgumentType]
+
+
+def test_issubclass() -> None:
+    with pytest.raises(UndefinedError, match="Cannot issubclass undefined!"):
+        issubclass(object, Undefined)  # pyright: ignore[reportArgumentType]
